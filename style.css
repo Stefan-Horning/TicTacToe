@@ -9,6 +9,12 @@ td{
     width: 130px;
     height: 133px;
     border: 5px solid black;
+    position: relative;
+}
+
+td img{
+    justify-content: center;
+    align-items: center;
 }
 
 tr:first-child td{
@@ -37,4 +43,21 @@ table{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.shape{
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    left: 38px;
+    bottom: 40px;
+}
+
+.d-none{
+    display: none;
+}
+
+td:hover{
+    cursor: pointer;
+    background-color: rgba(229, 226, 226,0.4);
 }

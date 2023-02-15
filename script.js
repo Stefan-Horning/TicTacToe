@@ -4,6 +4,7 @@ let gameOver = false;
 
 function fillShape(id){
     if(!fields[id] && !gameOver){
+        
         if(currentShape == 'cross'){
             currentShape = 'circle';
             document.getElementById('player-2').classList.add('inactiv');
@@ -30,6 +31,20 @@ function draw(){
     }
 }
 
+function restart(){
+    gameOver = false;
+    document.getElementById('game-over').classList.add('d-none');
+    document.getElementById('restart-btn').classList.add('d-none');
+    fields = [];
+    for(let i = 1; i <= 8 ; i++){
+        document.getElementById(`line-` + i).classList.add('d-none');
+    }
+    for(let i = 0; i <= 8 ; i++){
+        document.getElementById(`cross-` + i).classList.add('d-none');
+        document.getElementById(`circle-` + i).classList.add('d-none');
+    }
+}
+
 function checkForWin(){
     let winner;
     if(fields[0] == fields[1] && fields[1] == fields[2] && fields[0]){
@@ -46,7 +61,7 @@ function checkForWin(){
     }
     if(fields[0] == fields[3] && fields[3] == fields[6] && fields[0]){
         winner = fields[0];
-        document.getElementById('line-4').style.transform = 'rotate(90deg) scaleX(1)'
+        document.getElementById('line-5').style.transform = 'rotate(90deg) scaleX(1)'
     }
     if(fields[1] == fields[4] && fields[4] == fields[7] && fields[1]){
         winner = fields[1];
@@ -58,17 +73,25 @@ function checkForWin(){
     }
     if(fields[0] == fields[4] && fields[4] == fields[8] && fields[0]){
         winner = fields[0];
-        document.getElementById('line-6').style.transform =  'rotate(45deg) scaleX(1.2)'
+        document.getElementById('line-7').style.transform =  'rotate(45deg) scaleX(1.2)'
     }
     if(fields[2] == fields[4] && fields[4] == fields[6] && fields[2]){
         winner = fields[2];
-        document.getElementById('line-7').style.transform =  'rotate(-45deg) scaleX(1.2)'
+        document.getElementById('line-8').style.transform =  'rotate(-45deg) scaleX(1.2)'
     }
+
+    if(fields.length == '9'){
+        winner = fields[2];
+    }
+
     if(winner){
         console.log('der Gewinner ist '+  winner);
         gameOver = true;
         setTimeout(function(){
             document.getElementById('game-over').classList.remove('d-none');
+            document.getElementById('restart-btn').classList.remove('d-none');
         },1000);
     } 
+
+    
 }

@@ -105,17 +105,36 @@ td:hover{
     right: 0;
     width: 100%;
     height: 100vh;
-    animation: zoomIn 2250ms ease-in-out ;
+    animation: zoomIn 250ms ease-in-out;
     background-color: rgba(0,0,0,0.3);
 }
 
-@keyframes zommIn{
-    from{
+
+
+.restart-btn{
+    z-index: 2;
+    border: 1px solid rgba(0,0,0,0.5);
+    background-color: rgb(102, 209, 245);
+    width: 300px;
+    height: 100px;
+    color: white;
+    cursor: pointer;
+    font-size: 40px;
+    position: absolute;
+    bottom: 30px;
+}
+
+.restart-btn:hover{
+    background-color: rgb(55, 133, 160);
+}
+
+@keyframes zoomIn{
+    from {
         opacity: 0;
-        transform: scale(0);
+        transform: scaleX(0.0);
     }
-    to{
+    to {
         opacity: 1;
-        transform: scale(1);
+        transform: scaleX(1.0);
     }
 }

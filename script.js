@@ -4,7 +4,6 @@ let gameOver = false;
 
 function fillShape(id){
     if(!fields[id] && !gameOver){
-        
         if(currentShape == 'cross'){
             currentShape = 'circle';
             document.getElementById('player-2').classList.add('inactiv');
@@ -37,7 +36,7 @@ function restart(){
     document.getElementById('restart-btn').classList.add('d-none');
     fields = [];
     for(let i = 1; i <= 8 ; i++){
-        document.getElementById(`line-` + i).classList.add('d-none');
+        document.getElementById(`line-` + i).style.transform = 'scaleX(0)'
     }
     for(let i = 0; i <= 8 ; i++){
         document.getElementById(`cross-` + i).classList.add('d-none');

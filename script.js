@@ -44,8 +44,7 @@ function restart(){
     }
 }
 
-function checkForWin(){
-    let winner;
+function checkHorizontal(){
     if(fields[0] == fields[1] && fields[1] == fields[2] && fields[0]){
         winner = fields[0];
         document.getElementById('line-1').style.transform = 'scaleX(1)';
@@ -58,6 +57,9 @@ function checkForWin(){
         winner = fields[7];
         document.getElementById('line-3').style.transform = 'scaleX(1)'
     }
+}
+
+function checkVertical(){
     if(fields[0] == fields[3] && fields[3] == fields[6] && fields[0]){
         winner = fields[0];
         document.getElementById('line-5').style.transform = 'rotate(90deg) scaleX(1)'
@@ -70,6 +72,9 @@ function checkForWin(){
         winner = fields[2];
         document.getElementById('line-6').style.transform =  'rotate(90deg) scaleX(1)'
     }
+}
+
+function checkDiagonal(){
     if(fields[0] == fields[4] && fields[4] == fields[8] && fields[0]){
         winner = fields[0];
         document.getElementById('line-7').style.transform =  'rotate(45deg) scaleX(1.2)'
@@ -78,11 +83,20 @@ function checkForWin(){
         winner = fields[2];
         document.getElementById('line-8').style.transform =  'rotate(-45deg) scaleX(1.2)'
     }
+}
 
+function checkNoWinner(){
     if(fields.length == '9'){
         winner = fields[2];
     }
+}
 
+function checkForWin(){
+    let winner;
+    checkHorizontal();
+    checkVertical();
+    checkDiagonal();
+    checkNoWinner();
     if(winner){
         console.log('der Gewinner ist '+  winner);
         gameOver = true;
@@ -91,6 +105,4 @@ function checkForWin(){
             document.getElementById('restart-btn').classList.remove('d-none');
         },1000);
     } 
-
-    
 }
